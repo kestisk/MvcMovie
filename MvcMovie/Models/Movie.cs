@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace MvcMovie.Models
 {
@@ -13,7 +14,16 @@ namespace MvcMovie.Models
 
         [DataType(DataType.Date)]
         public DateTime ReleaseDate { get; set; }
+        [Required]
+        [StringLength(10)]
         public string Genre { get; set; }
         public decimal Price { get; set; }
+    }
+    public class MovieGenreViewModel
+    {
+        public List<Movie> Movies;
+        public SelectList Genres;
+        public string MovieGenre { get; set; }
+        public string SearchString { get; set; }
     }
 }
